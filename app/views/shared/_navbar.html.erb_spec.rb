@@ -1,41 +1,25 @@
+require 'rails_helper'
 
-<!-- app/views/shared/_navbar.html.erb -->
+describe "shared/_navbar.html.erb" do
+  before { sign_in user }
 
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Codaisseurbnb", root_path, class: "navbar-brand" %>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
+  context "without profile" do
+    let(:user) { create :user }
 
-        <% if !user_signed_in? %>
-          <li><%= link_to "Log In", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <% else %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+    it "renders email" do
+      render
+      expect(rendered).to have_content user.email
+    end
+  end
 
-            <ul class="dropdown-menu">
-              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-              <li role="separator" class="divider"></li>
-              <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-              <li><%= link_to "Your Listings", events_path %></li>
-              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-              <li role="separator" class="divider"></li>
-              <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-            </ul>
+  context "with profile" do
+    let(:profile) { build :profile }
+    let(:user) { create :user, profile: profile }
 
-
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
+    it "renders first and last name" do
+      render
+      expect(rendered).to have_content profile.first_name
+      expect(rendered).to have_content profile.last_name
+    end
+  end
+end
