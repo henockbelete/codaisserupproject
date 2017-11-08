@@ -3,8 +3,8 @@ class Event < ApplicationRecord
 
 
    validates :name, presence: true
-   #validates :starts_at: presence: 2017-11-06
-   #validates :ends_at: presence: 2017-16-06
+  #validates :starts_at: presence: 2017-11-06
+  #validates :ends_at: presence: 2017-16-06
    validates :description, presence: true, length: { maximum: 500 }
 
 
