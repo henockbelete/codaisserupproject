@@ -8,7 +8,9 @@
 Profile.destroy_all
 Photo.destroy_all
 Event.destroy_all
+Catagory.destroy_all
 User.destroy_all
+
 
 
 henock = User.create!(

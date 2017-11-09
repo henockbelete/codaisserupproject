@@ -10,7 +10,7 @@ class EventsController < ApplicationController
    def show;
    @event = Event.find(params[:id])
    @photos = @event.photos
-
+   @catagories = @event.catagories
    end
 
    def new
@@ -68,7 +68,7 @@ private
       .require(:event)
       .permit(
         :name, :location, :price, :capacity, :includes_food, :includes_drinks,
-        :starts_at, :ends_at, :active, :description
+        :starts_at, :ends_at, :active, :description, theme_ids: []
       )
 
   end
@@ -77,5 +77,5 @@ private
     params[:images].present? ? params.require(:images) : []
   end
 
-  
+
 end

@@ -29,6 +29,10 @@
         </div>
       </div>
     <% end %>
+        <h4>Catagories</h4>
+        <% @catagories.each do |catagory| %>
+          <span class="label label-success"><%= catagory.name %></span>
+        <% end %>
 
   </div>
 

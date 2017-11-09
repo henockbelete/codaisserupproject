@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :catagories
   root to: 'pages#home'
 
   devise_for :users
