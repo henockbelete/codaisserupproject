@@ -4,7 +4,7 @@ describe "shared/_navbar.html.erb" do
   before { sign_in user }
 
   context "without profile" do
-    let(:user) { create :user }
+    let(:user) { build :user }
 
     it "renders email" do
       render
@@ -14,7 +14,7 @@ describe "shared/_navbar.html.erb" do
 
   context "with profile" do
     let(:profile) { build :profile }
-    let(:user) { create :user, profile: profile }
+    let(:user) { build :user, profile: profile }
 
     it "renders first and last name" do
       render

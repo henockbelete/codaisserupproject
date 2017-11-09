@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Viewing an individual event" do
-  let(:event) { create :event }
+  let(:event) { build :event }
 
   it "shows the event's details" do
     visit event_url(event)

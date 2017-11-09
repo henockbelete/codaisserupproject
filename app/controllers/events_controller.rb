@@ -7,7 +7,9 @@ class EventsController < ApplicationController
      @events = current_user.events
    end
 
-   def show; end
+   def show;
+   @event = Event.find(params[:id])
+   end
 
    def new
      @event = current_user.events.build
@@ -17,7 +19,7 @@ class EventsController < ApplicationController
      @event = current_user.events.build(event_params)
 
      if @event.save
-       redirect_to @event, notice: "Event created"
+       redirect_to @event, notice: "Event created successfully"
      else
        render :new
      end
