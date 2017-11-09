@@ -7,6 +7,7 @@
       <div class="panel-body">
         <span class="btn btn-default">Delete</span>
       </div>
-    </div>
+      <%= link_to "Delete", photo_path( photo.id ), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %> -->
+      </div>
   <% end %>
 <% end %>
