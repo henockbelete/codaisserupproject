@@ -46,7 +46,7 @@ private
       .require(:event)
       .permit(
         :name, :location, :price, :capacity, :includes_food, :includes_drinks,
-        :starts_at, :ends_at, :active
+        :starts_at, :ends_at, :active, :description
       )
 
   end
