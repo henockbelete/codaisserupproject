@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Photo.destroy_all
+Event.destroy_all
+Profile.destroy_all
+
 
 henock = User.create!(
   email: 'etyeheny@gmail.com',
@@ -26,3 +30,9 @@ Event.create!(
   active: true,
   user: henock
 )
+
+
+
+# Photos
+photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dao8diwhc/image/upload/v1510234605/beach-and-promenade-of-scheveningen-the-netherlands-g2cbnp_ujxqks_fbbaeb.jpg", event: Event.first)
+photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dao8diwhc/image/upload/v1510234574/public_meetings_eqmier.jpg", event: Event.last)

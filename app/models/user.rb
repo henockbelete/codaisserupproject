@@ -6,6 +6,17 @@ class User < ApplicationRecord
 
 
  has_many :events, dependent: :destroy
+ has_one :profile
+
+
+
+   def has_profile?
+     profile.present? && profile.persisted?
+   end
+
+   def last_name
+     profile.last_name
+   end
 
 
 end
